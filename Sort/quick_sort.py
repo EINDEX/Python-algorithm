@@ -28,11 +28,11 @@ def quick_sort(arr):
         return less + pivot_list + more
 
 
-def qsort(arr):
+def quick_sort_cookbook(arr):
     if len(arr) <= 1:
         return arr
     else:
         pivot = arr[0]
-        return qsort([x for x in arr[1:] if x < pivot]) + \
+        return quick_sort_cookbook([x for x in arr[1:] if x < pivot]) + \
                [pivot] + \
-               qsort([x for x in arr[1:] if x >= pivot])
+               quick_sort_cookbook([x for x in arr[1:] if x >= pivot])
