@@ -1,47 +1,47 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-'''测试函数 '''
+"""测试函数 """
 import random
 import time
 
-from Sort.BubbleSort import bubble_sort, bubble_sort_flag
-from Sort.CountSort import count_sort
-from Sort.HeapSort import heap_sort
-from Sort.InsertSort import insert_sort
-from Sort.MargeSort import merge_sort
-from Sort.QuickSort import quick_sort, qsort
-from Sort.SelectionSort import selection_sort
-from Sort.ShellSort import shell_sort
+from Sort.bubble_sort import bubble_sort, bubble_sort_flag
+from Sort.count_sort import count_sort
+from Sort.heap_sort import heap_sort
+from Sort.insert_sort import insert_sort
+from Sort.marge_sort import merge_sort
+from Sort.quick_sort import quick_sort, qsort
+from Sort.selection_sort import selection_sort
+from Sort.shell_sort import shell_sort
 import sys
 
 # 开挂 防止栈溢出
 sys.setrecursionlimit(99999)
 
-#整数数列
+# 整数数列
 # L = [int(random.uniform(0, 5000)) for x in range(1000)]
 # 浮点数列
 L = [random.uniform(0, 5000) for x in range(1000)]
-
 current = list(L)
 current.sort()
 
-def compile(fun):
+
+def sort_test(fun):
     l = list(L)
-    start=time.time()
+    start = time.time()
     res = fun(l)
     over = time.time()
-    print('time:'+str(over-start),current == res, fun.__name__)
+    print('time:' + str(over - start), current == res, fun.__name__)
 
 
-compile(selection_sort)
-compile(bubble_sort)
-compile(bubble_sort_flag)
-compile(insert_sort)
-compile(merge_sort)
-compile(shell_sort)
-compile(quick_sort)
-compile(qsort)
-compile(heap_sort)
-if isinstance(L[0],int):
-    compile(count_sort)
+sort_test(selection_sort)
+sort_test(bubble_sort)
+sort_test(bubble_sort_flag)
+sort_test(insert_sort)
+sort_test(merge_sort)
+sort_test(shell_sort)
+sort_test(quick_sort)
+sort_test(qsort)
+sort_test(heap_sort)
+if isinstance(L[0], int):
+    sort_test(count_sort)
