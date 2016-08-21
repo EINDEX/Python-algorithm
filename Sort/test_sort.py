@@ -1,13 +1,13 @@
 from unittest import TestCase
 
 
-def get_random_arr(max_num, len, is_int=False):
+def get_random_arr(max_num, length, is_int=False):
     """生成随机序列"""
     import random
     if is_int:
         return [int(random.uniform(0, 5000)) for x in range(1000)]
     else:
-        return [random.uniform(0, max_num) for x in range(len)]
+        return [random.uniform(0, max_num) for x in range(length)]
 
 
 def create_arr_list():

@@ -1,5 +1,15 @@
 # Python Algorithm
 用Python实现各种算法
+## 数据结构
+- 数组（Array）
+- 堆栈（Stack）
+- 队列（Queue）
+- 链表（Linked List）
+- 树（Tree）
+- 图（Graph）
+- 堆（Heap）
+- 散列表（Hash）
+
 ## 排序算法
 
 - 冒泡排序
@@ -15,4 +25,6 @@
 
 - 顺序查找
 - 二分查找
-- Hash查找
+- 二叉查找树
+- 深度优先算法
+- 广度优先算法
