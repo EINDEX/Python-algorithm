@@ -29,6 +29,8 @@ class Tree(object):
             return
 
         def print_func(node, depth):
+            if node is None:
+                return
             if depth == 0:
                 print('   ' * depth + str(node.key))
             else:
@@ -38,7 +40,24 @@ class Tree(object):
 
         print_func(self.root, 0)
 
+    def size(self):
+        def inner_size(node):
+            """
+            子树的大小
+            :param node:
+            :return:
+            """
+            size_num = 0
+            if node is None:
+                return size_num
+            for child in node.children:
+                size_num += inner_size(child)
+            return size_num + 1
 
-root = Tree(1, [Tree(2, [Tree(3, [])]), Tree(4, [])])
-print(root.depth())
-root.print_tree()
+        return inner_size(self)
+
+if __name__ == '__main__':
+    root = Tree(1, [Tree(2, [Tree(3, [])]), Tree(4, [])])
+    print(root.depth())
+    root.print_tree()
+    print(root.children[0].size())
