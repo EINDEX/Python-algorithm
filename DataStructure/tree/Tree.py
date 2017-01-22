@@ -1,11 +1,14 @@
 class Tree(object):
+    """
+    树：基本树的数据结构
+    """
     height = None
     weight = None
     root = None
 
     def __init__(self, key, children):
-        self.children = children
         self.key = key
+        self.children = children
         if self.root is None:
             self.root = self
 
@@ -55,6 +58,7 @@ class Tree(object):
             return size_num + 1
 
         return inner_size(self)
+
 
 if __name__ == '__main__':
     root = Tree(1, [Tree(2, [Tree(3, [])]), Tree(4, [])])

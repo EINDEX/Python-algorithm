@@ -1,10 +1,10 @@
 import copy
 
-from DataStructure.Tree.tree import Tree
+from DataStructure.tree.BinaryTree import BinaryTree
 
 
 # 二叉查找树
-class BST(Tree):
+class BST(BinaryTree):
     root = None
 
     def __init__(self, key, data):
@@ -14,9 +14,7 @@ class BST(Tree):
         """
         self.key = key
         self.data = data
-        self._l_child = None
-        self._r_child = None
-        super().__init__(key, [self.l_child, self._r_child])
+        super().__init__(key)
 
     def __str__(self):
         return str({
@@ -24,25 +22,7 @@ class BST(Tree):
             'data': str(self.data)
         })
 
-    @property
-    def l_child(self):
-        return self._l_child
 
-    @l_child.setter
-    def l_child(self, l_child):
-        if not isinstance(l_child, BST): return
-        self._l_child = l_child
-        self.children = [self.l_child, self.r_child]
-
-    @property
-    def r_child(self):
-        return self._r_child
-
-    @r_child.setter
-    def r_child(self, r_child):
-        if not isinstance(r_child, BST): return
-        self._r_child = r_child
-        self.children = [self.l_child, self.r_child]
 
     # 再书中找到一个值
     def get(self, key):
