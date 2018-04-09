@@ -34,18 +34,18 @@ def search_log(func):
 class TestSearch(TestCase):
     @search_log
     def test_linear_search(self, arr, key):
-        from Search.linear_search import linear_search
+        from search.linear_search import linear_search
         if not key == linear_search(arr, key):
             self.fail()
 
     @search_log
     def test_binary_search_while(self, arr, key):
-        from Search.binary_search import binary_search_while
+        from search.binary_search import binary_search_while
         if not key == binary_search_while(arr, key):
             self.fail()
 
     @search_log
     def test_binary_search_re(self, arr, key):
-        from Search.binary_search import binary_search_re
+        from search.binary_search import binary_search_re
         if not key == binary_search_re(arr, key):
             self.fail()
