@@ -1,11 +1,14 @@
 [[source]]
-url = "https://pypi.python.org/simple"
-verify_ssl = true
+url = "https://mirrors.ustc.edu.cn/pypi/web/simple"
 name = "pypi"
+format = "columns"
 
 [packages]
 
 [dev-packages]
+pylint = "*"
+"autopep8" = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.6"

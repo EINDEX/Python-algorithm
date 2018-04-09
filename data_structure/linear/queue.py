@@ -41,19 +41,22 @@ def pop(queue):
     else:
         print('队列里已经没有元素了')
 
+
 def print_queue(queue):
     print(queue)
     if queue.behind is not None:
         print_queue(queue.behind)
 
-queue = create_queue()
-push(queue,1)
-push(queue,2)
-push(queue,3)
-push(queue,4)
-print_queue(queue)
-print(pop(queue))
-print(pop(queue))
-print(pop(queue))
-print(pop(queue))
-print(pop(queue))
+
+if __name__ == '__main__':
+    queue = create_queue()
+    push(queue, 1)
+    push(queue, 2)
+    push(queue, 3)
+    push(queue, 4)
+    print_queue(queue)
+    print(pop(queue))
+    print(pop(queue))
+    print(pop(queue))
+    print(pop(queue))
+    print(pop(queue))

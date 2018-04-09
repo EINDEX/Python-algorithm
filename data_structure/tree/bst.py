@@ -1,6 +1,6 @@
 import copy
 
-from DataStructure.tree.BinaryTree import BinaryTree
+from data_structure.tree.binary_tree import BinaryTree
 
 
 # 二叉查找树

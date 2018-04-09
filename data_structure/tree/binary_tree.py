@@ -1,32 +1,40 @@
-from data_structure.tree.Tree import Tree
+from data_structure.tree.tree import Tree, TreeNode
+
+
+class BinaryTreeNode(TreeNode):
+    """
+    一个二叉树节点
+    """
+
+    def __init__(self, value, left, right):
+        self.left = left
+        self.right = right
+        super().__init__(value, [left, right])
 
 
 class BinaryTree(Tree):
     """
     二叉树：基本二叉树的数据结构
     """
-    def __init__(self, key):
-        self.key = key
-        self._r_child = None
-        self._l_child = None
-        super().__init__(key=key, children=[self._l_child, self._r_child])
 
-    @property
-    def l_child(self):
-        return self._l_child
+    def inorder_traversal_while(self):
+        """
+        二叉树的中序遍历
+        :return: list of node values
+        """
+        res = []
 
-    @l_child.setter
-    def l_child(self, l_child):
-        if not isinstance(l_child, BinaryTree): return
-        self._l_child = l_child
-        self.children = [self.l_child, self.r_child]
+        if not self.root:
+            return res
 
-    @property
-    def r_child(self):
-        return self._r_child
+        stack = [self.root]
+        node = self.root.left
 
-    @r_child.setter
-    def r_child(self, r_child):
-        if not isinstance(r_child, BinaryTree): return
-        self._r_child = r_child
-        self.children = [self.l_child, self.r_child]
+        while len(stack):
+            while node:
+                stack.append(node)
+                node = node.left
+
+            res.append(stack[-1].value)
+
+        return res

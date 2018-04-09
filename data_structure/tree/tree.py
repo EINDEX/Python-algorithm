@@ -1,67 +1,86 @@
+from queue import Queue
+
+
+class TreeNode(object):
+    """
+    一个树节点
+    """
+
+    def __init__(self, value, children: list = None):
+        """
+
+        :param value: 节点的值
+        :param children: 节点的子节点，一个 TreeNode 的列表
+        """
+
+        self.value = value
+
+        if not children:
+            self.children = []
+        else:
+            self.children = children
+
+
 class Tree(object):
     """
     树：基本树的数据结构
     """
-    height = None
-    weight = None
-    root = None
 
-    def __init__(self, key, children):
-        self.key = key
-        self.children = children
-        if self.root is None:
-            self.root = self
+    def __init__(self, root: TreeNode or None):
+        """
+        传入根节点
+        :param root: 如果为 TreeNode 为根节点， 如果为 None 为空书
+        """
+        if not (root is None or isinstance(root, TreeNode)):
+            raise AttributeError('illegal root')
+        self.root = root
 
-    def depth(self):
-        if self.root is None:
-            return 0
+    def preorder_traversal_while(self):
+        """
+        树的前序遍历
+        :return: list of tree node value
+        """
+        res = []
+        if not self.root:
+            return res
 
-        def depth_func(node):
-            if len(node.children) == 0:
-                return 1
-            depth_child = []
-            for child in node.children:
-                depth_child.append(depth_func(child) + 1)
-            return max(depth_child)
+        queue = Queue()
+        queue.put(self.root)
 
-        return depth_func(self.root)
+        while queue.qsize():
+            node = queue.get()
+            if not node.value:
+                continue
+            res.append(node.value)
+            for sub_node in node.children:
+                queue.put(sub_node)
+        return res
 
-    def print_tree(self):
-        if self.root is None:
-            print('tree is None')
-            return
+    def postorder_traversal_while(self):
+        """
+        树的后序遍历
+        :return: list of tree node value
+        """
+        res = []
 
-        def print_func(node, depth):
-            if node is None:
-                return
-            if depth == 0:
-                print('   ' * depth + str(node.key))
-            else:
-                print(' ' + '   ' * (depth - 1) + '--' + str(node.key))
-            for child in node.children:
-                print_func(child, depth + 1)
+        if not self.root:
+            return res
 
-        print_func(self.root, 0)
+        stack = [self.root]
 
-    def size(self):
-        def inner_size(node):
-            """
-            子树的大小
-            :param node:
-            :return:
-            """
-            size_num = 0
-            if node is None:
-                return size_num
-            for child in node.children:
-                size_num += inner_size(child)
-            return size_num + 1
+        while len(stack):
+            node = stack.pop()
+            if not node.value:
+                continue
+            for sub_node in node.children:
+                stack.append(sub_node)
+            res.append(node.value)
 
-        return inner_size(self)
+        return res[::-1]
 
 
 if __name__ == '__main__':
-    root = Tree(1, [Tree(2, [Tree(3, [])]), Tree(4, [])])
-    print(root.depth())
-    root.print_tree()
-    print(root.children[0].size())
+    t = Tree(
+        TreeNode(1, [TreeNode(2, [TreeNode(4), TreeNode(5), TreeNode(6)]), TreeNode(3, [TreeNode(7), TreeNode(8)])]))
+    print(t.preorder_traversal_while())
+    print(t.postorder_traversal_while())

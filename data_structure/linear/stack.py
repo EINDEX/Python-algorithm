@@ -29,7 +29,6 @@ def push(stack, ele):
         push_ele.before.behind = push_ele
 
 
-
 def pop(stack):
     if isinstance(stack, MyStack):
         stack_top = top(stack)

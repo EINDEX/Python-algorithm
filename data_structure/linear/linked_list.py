@@ -79,12 +79,13 @@ def find(linked_list, index):
             return linked_list
 
 
-linked_list = init()
-trave(linked_list)
-# delete(linked_list)
-insert(linked_list, 0, 1)
-insert(linked_list, 0, 2)
-insert(linked_list, 0, 3)
-remove(linked_list,2)
-trave(linked_list)
-print(find(linked_list,3))
+if __name__ == '__main__':
+    linked_list = init()
+    trave(linked_list)
+    # delete(linked_list)
+    insert(linked_list, 0, 1)
+    insert(linked_list, 0, 2)
+    insert(linked_list, 0, 3)
+    remove(linked_list, 2)
+    trave(linked_list)
+    print(find(linked_list, 3))
