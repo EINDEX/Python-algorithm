@@ -204,3 +204,4 @@ ENV/
 
 .vscode
 .pytest_cache
+.env

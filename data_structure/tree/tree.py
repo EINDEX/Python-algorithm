@@ -78,9 +78,48 @@ class Tree(object):
 
         return res[::-1]
 
+    def preorder_traversal_recursion(self):
+        """
+        树的前序遍历
+        :return: list of tree node value
+        """
+        res = []
+        if not self.root:
+            return res
+
+        def _inner(root):
+            inner_res = []
+            if root.value:
+                inner_res.append(root.value)
+                for sub_node in root.children:
+                    inner_res += _inner(sub_node)
+            return inner_res
+        return _inner(self.root)
+
+    def postorder_traversal_recursion(self):
+        """
+        树的后序遍历
+        :return: list of tree node value
+        """
+        res = []
+        if not self.root:
+            return res
+
+        def _inner(root):
+            inner_res = []
+            if root.value:
+                for sub_node in root.children:
+                    inner_res += _inner(sub_node)
+                inner_res.append(root.value)
+            return inner_res
+
+        return _inner(self.root)
+
 
 if __name__ == '__main__':
     t = Tree(
         TreeNode(1, [TreeNode(2, [TreeNode(4), TreeNode(5), TreeNode(6)]), TreeNode(3, [TreeNode(7), TreeNode(8)])]))
     print(t.preorder_traversal_while())
     print(t.postorder_traversal_while())
+    print(t.preorder_traversal_recursion())
+    print(t.postorder_traversal_recursion())

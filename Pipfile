@@ -9,6 +9,7 @@ format = "columns"
 pylint = "*"
 "autopep8" = "*"
 pytest = "*"
+jedi = "*"
 
 [requires]
 python_version = "3.6"
